@@ -6,28 +6,41 @@ import { useState, useEffect } from "react"
 const App = () => {
 
   const [time, setTime] = useState(0)
+  const [timer, setTimer]= useState(null)
+
+  
 
   const start = ()=>{
-    setInterval(() => {
+    setTimer(setInterval(() => {
       setTime(prevValue => prevValue + 1);
-    }, 1)
+    }, 1))
+     
     
   };
   
   const stop=()=>{
     
-      clearInterval(time);
-      console.log('sada')
+      clearInterval(timer);
+      setTimer(null);
+      console.log('stop');
   }
   const reset = () =>{
-    setTime(0)
+    setTime(0) 
+    stop()
   }
+
+  useEffect(() => {
+
+    return ()=>{
+
+    }
+  },[time])
   
 
   return (
         <div className="App">
-          <Button start={start} stop={stop} reset={reset}/>
           <Time time={time}/>
+          <Button start={start} stop={stop} reset={reset}/>
         </div>
     );
 }

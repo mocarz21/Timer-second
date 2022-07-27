@@ -1,3 +1,5 @@
+import Style from './Time.module.scss'
+
 const Time = ({time}) =>{
 
     const plusO =(abc) =>{
@@ -33,7 +35,7 @@ const Time = ({time}) =>{
         )}  
          
     return(
-        <div>
+        <div className={Style.abcd}>
             {plusO(hour())}:{plusO(minut() % 60)}:{plusO(second() % 60)}.{time % 100} {/* jak dzieala w tym momecie % */}
         </div>
     );
